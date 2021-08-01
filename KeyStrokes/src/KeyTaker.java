@@ -27,11 +27,11 @@ public class KeyTaker implements NativeKeyListener {
 	//need to put fw outside of try catch 
 	PrintWriter pw;
 	Scanner sc;
-	Random rnd;
+	Random rnd = new Random();
 	
 	
 	static int times = 0;
-	BigInteger files = new BigInteger(300000000, rnd);
+	BigInteger files = new BigInteger(30, rnd);
 	
 	//OPEN A FILE
 	public KeyTaker() throws IOException {
